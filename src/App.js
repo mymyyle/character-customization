@@ -1,6 +1,5 @@
 import "./App.css";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import ListOfPart from "./ListOfPart";
 import Randomize from "./Randomize";
 
@@ -18,17 +17,22 @@ const parts = [
 ];
 
 const App = () => {
-  const [character, setCharacter] = useState({
-    body: "character/body/1.png",
-    eyes: "character/eyes/1.png",
-    hair: "character/hair/1.png",
-    mouth: "character/mouth/1.png",
-    eyebrows: "character/eyebrows/1.png",
-    glasses: "character/accessories/glasses/1.png",
-    hats: "character/accessories/hats/1.png",
-    cloth1: "character/clothes/layer_1/1.png",
-    cloth2: "character/clothes/layer_2/1.png",
-    cloth3: "character/clothes/layer_3/1.png",
+  const [character, setCharacter] = useState(() => {
+    const lastValue = window.localStorage.getItem("character");
+    return (
+      JSON.parse(lastValue) || {
+        body: "character/body/1.png",
+        eyes: "character/eyes/1.png",
+        hair: "character/hair/1.png",
+        mouth: "character/mouth/1.png",
+        eyebrows: "character/eyebrows/1.png",
+        glasses: "character/accessories/glasses/1.png",
+        hats: "character/accessories/hats/1.png",
+        cloth1: "character/clothes/layer_1/1.png",
+        cloth2: "character/clothes/layer_2/1.png",
+        cloth3: "character/clothes/layer_3/1.png",
+      }
+    );
   });
 
   const {
@@ -43,6 +47,11 @@ const App = () => {
     cloth2,
     cloth3,
   } = character;
+  useEffect(() => {
+    console.log("run side effect");
+    window.localStorage.setItem("character", JSON.stringify(character));
+    //console.log(JSON.parse(a));
+  }, [character]);
 
   return (
     <div className="App">
