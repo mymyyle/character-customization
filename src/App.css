@@ -1,38 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: #ffcccc;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.page {
+  text-align: center;
+  max-width: 1200px;
+}
+.heading {
+  font-size: 3rem;
+  color: green;
+  margin: 1rem;
+}
+.s-text {
+  font-size: 2rem;
+  color: orange;
+}
+
+main {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* button */
+.btn {
+  border-radius: 5px;
+  border: none;
+  background: rgba(165, 42, 42, 0.815);
+  color: #fff;
+  width: 60%;
+  padding: 0.4rem;
+  margin-top: 0.2rem;
+}
+.btn:hover {
+  background: rgba(165, 42, 42, 0.95);
+  cursor: pointer;
+}
+
+/* list of part */
+.lists-of-parts {
+  width: 60%;
+  align-self: flex-end;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem;
+  text-transform: capitalize;
+  color: green;
+}
+.part {
+  border: 2px solid salmon;
+  border-radius: 10px;
+  background-color: rgba(243, 139, 54, 0.2);
+  text-align: center;
+}
+.part img {
+  height: 10vh;
+  border: 2px solid salmon;
+  border-radius: 10px;
+  margin: 0.5rem;
+}
+.part img:hover {
+  cursor: pointer;
+  background-color: rgba(243, 139, 54, 0.4);
+}
+
+.current {
+  background-color: rgba(243, 139, 54, 0.6);
+}
+
+/* result */
+.container-ava {
+  border: 1rem solid salmon;
+  border-radius: 15px;
+  background: rgba(250, 128, 114, 0.3);
+  height: 50vh;
+  width: 30vw;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+.ava {
+  height: 80%;
+  width: 35vw;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.ava img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
 }
 
-.App-link {
-  color: #61dafb;
+#body {
+  z-index: 10;
+}
+#noses,
+#eyes,
+#hair,
+#mouth,
+#eyebrows,
+#cloth1 {
+  z-index: 20;
+}
+#glasses,
+#cloth3,
+#hats {
+  z-index: 30;
+}
+#cloth2 {
+  z-index: 40;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+  .lists-of-parts {
+    align-self: center;
+  }
+
+  .container-ava {
+    position: static;
+    margin: 0rem;
+    padding: 0.2rem;
+    height: 25vh;
+    width: 45vw;
+    transform: translateY(0);
+  }
+  .ava img {
+    text-align: center;
+  }
+  .part img {
+    height: 5vh;
   }
 }
